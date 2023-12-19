@@ -1,30 +1,42 @@
-SIZE = 1000;
+SIZE = 10;
 
-universe = Array.new(3) {Array.new(SIZE)}
+universe = Array.new(SIZE) {Array.new(SIZE) {Array.new(SIZE)} }
 
-universe.each_with_index do |axis, i| 
+universe.each_with_index do |layer, x| 
 
-  universe[i].each_with_index do |voxel, j|
+  universe[x].each_with_index do |column, y|
 
-    universe[i][j] = rand(2)
+    universe[x][y].each_with_index do |voxel, z|
+
+      universe[x][y][z] = rand(2)
+
+    end
 
   end
 
 end
 
+output = '';
 
-universe.each_with_index do |axis, i| 
+universe.each_with_index do |layer, x| 
 
-  output = ''
 
-  universe[i].each_with_index do |voxel, j|
+  output += "#layer: #{x}\n"
+  universe[x].each_with_index do |column, y|
 
-    output += universe[i][j].to_s
+    line = ''
 
+    universe[x][y].each_with_index do |voxel, z|
+
+      line += universe[x][y][z].to_s
+
+    end
+
+    output += line + "\n"
   end
 
-  puts i
-  puts output
 
 end
 
+
+File.open('out.vxl', 'w') { |file| file.write(output) }
