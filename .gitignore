@@ -2,6 +2,7 @@
 *.vxl
 
 /[Ll]ibrary/
+/[Ll]ogs/
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/

@@ -4,7 +4,7 @@ using UnityEngine;
 public class World : MonoBehaviour
 {
 	public int worldSize = 5;
-	private int chunkSize = 16;
+	private int chunkSize = 32;
 
 	private Dictionary<Vector3, Chunk> chunks;
 
